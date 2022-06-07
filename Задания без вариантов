@@ -1,0 +1,103 @@
+Первое:
+using System;
+GregorianCalendar Gcalendar = new GregorianCalendar();
+int Day, number;
+Console.Write("Введите дату (например: 12 08 2003): ");
+string data = Console.ReadLine();
+var array = data.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+int a = Convert.ToInt32(array[0]);
+int b = Convert.ToInt32(array[1]);
+int c = Convert.ToInt32(array[2]);
+string dat = $"{c}, {b}, {a}";
+DateTime date;
+if (DateTime.TryParse(dat, out date))
+{
+    number = Gcalendar.GetDayOfYear(date);
+    Console.WriteLine($"Номер дня с начала года: {number}");
+    if ((c % 4 == 0 && c % 100 != 0) || (c % 400 == 0))
+    {
+        Day = 366 - number;
+    }
+    else
+    {
+        Day = 365 - number;
+    }
+    Console.WriteLine($"Дней до конца года: {Day}");
+}
+
+
+
+второе:
+using System;
+Console.Write("Введите дату: ");
+string data = Console.ReadLine();
+var DATA = data.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+int a = Convert.ToInt32(DATA[0]);
+int b = Convert.ToInt32(DATA[1]);
+int c = Convert.ToInt32(DATA[2]);
+var Ycalendar = new DateTime(c, b, a);
+var Gcalendar = Ycalendar.AddDays((c / 100) - ((c / 100) / 4) - 2);
+Console.WriteLine($"По юлианскому календарю – {Ycalendar.ToLongDateString()}");
+Console.WriteLine($"По григорианскому календарю – {Gcalendar}");
+
+
+
+третье:
+using System;
+Console.Title = "Угадай число";
+Random R = new Random();
+int myNumber;
+Console.Write("Укажите максимальное число: ");
+int n = int.Parse(Console.ReadLine());
+Console.Write("Укажите колличество попыток: ");
+int k = int.Parse(Console.ReadLine());
+int secret = R.Next(n + 1);
+for (int i = 0; i < k; i++)
+{
+Console.Write("Попытка " + i + ". Введи число: ");
+myNumber = int.Parse(Console.ReadLine());
+if (myNumber == secret)
+{
+Console.WriteLine("угадали.");
+return;
+}
+else
+{
+if (myNumber > secret)
+Console.WriteLine("Мое число меньше твоего");
+else
+Console.WriteLine("Мое число больше твоего)");
+}
+}
+{
+Console.WriteLine("Попытки закончились. Было загадано число: "  + secret);
+}
+
+
+
+четвертое:
+using System;
+int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    Random R = new Random();
+    Console.WriteLine("Данный массив: ");
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.WriteLine(array[i]);
+    }
+    for (int j = array.Length - 1; j >= 0; j--)
+    {
+        int y = R.Next(j);
+        int z = array[j];
+        array[j] = array[y];
+        array[y] = z;
+    }
+    Console.WriteLine("Изменненый массив:");
+    for (int x = 0; x < array.Length; x++)
+    {
+        Console.WriteLine(array[x]);
+    }
+
+
+
+
+пятое:
