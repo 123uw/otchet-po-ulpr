@@ -1,0 +1,6 @@
+первое:
+using System;
+int x = Convert. ToInt32(Console.ReadLine()); 
+int p = 1030; 
+int L = x * p; 
+Console.WriteLine(L);
